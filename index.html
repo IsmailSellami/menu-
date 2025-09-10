@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>POS — Tables</title>
+  <link rel="stylesheet" href="assets/css/cashier.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header__row">
+      <div class="brand">Sellamo — Caisse</div>
+      <div class="muted">Sélectionnez une table pour commencer</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2 class="section-title">Tables (100)</h2>
+
+      <!-- أزرار Firebase عامة -->
+      <div style="margin-bottom: 15px;">
+        <button id="btnReset" class="btn btn--danger">Reset Orders (Firebase)</button>
+        <button id="btnTotalDay" class="btn btn--secondary">Total du Jour (Firebase)</button>
+        <div id="totalDayDisplay" style="margin-top:10px; font-weight:bold;"></div>
+      </div>
+
+      <div id="tablesGrid" class="tables-grid"></div>
+    </section>
+  </main>
+
+  <!-- Drawer (droite) -->
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer__head">
+      <div>
+        <strong>Table <span id="activeTableLabel">—</span></strong>
+        <div class="muted" id="drawerHint">Choisissez une catégorie</div>
+      </div>
+      <button id="btnCloseDrawer" class="btn btn--link">✕</button>
+    </div>
+
+    <div class="drawer__body">
+      <div class="drawer__left">
+        <div id="categories" class="tabs"></div>
+        <div id="products" class="products"></div>
+      </div>
+
+      <div class="drawer__right">
+        <h3 class="cart-title">Commande</h3>
+        <div id="orderList" class="order-list"></div>
+
+        <div class="order-foot">
+          <div class="row">
+            <span>Total</span>
+            <strong id="localOrderTotal">0.000 DT</strong>
+          </div>
+          <div class="order-actions">
+            <button id="btnPrint" class="btn btn--light" disabled>🖨️ Imprimer</button>
+            <button id="btnSubmit" class="btn btn--primary" disabled>Demander</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Zone imprimable -->
+  <div id="printArea" class="print-area">
+    <div class="ticket">
+      <div class="ticket__head">
+        <div>Sellamo</div>
+        <small id="printMeta"></small>
+      </div>
+      <div id="printItems" class="ticket__items"></div>
+      <div class="ticket__foot">
+        <div class="row">
+          <span>Total</span>
+          <strong id="printTotal">0.000 DT</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase Order Detail -->
+  <div id="orderDetail">
+    <h3><span id="orderTableNum">—</span></h3>
+    <div id="firebaseOrderItems"></div>
+    <div> <span id="firebaseOrderTotal"></span></div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+<!-- Emoji zone على اليمين -->
+<div id="emojiContainer" style="position:fixed; top:20px; right:20px; z-index:9999;"></div>
+
+<!-- Notification container في الوسط -->
+<div id="notifContainer" style="position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); z-index:9999;"></div>
+
+
+  <script type="module" src="assets/js/cashier.js"></script>
+</body>
+</html>
+
+
